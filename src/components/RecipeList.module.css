@@ -1,0 +1,24 @@
+.listContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.loading,
+.error,
+.noRecipes {
+  text-align: center;
+  padding: 2.5rem;
+  font-size: 1.1rem;
+  color: #666666;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  border: 1px dashed #e5e7eb;
+}
+
+.error {
+  color: #d32f2f;
+  background-color: #ffebee;
+  border-color: #ffcdd2;
+}

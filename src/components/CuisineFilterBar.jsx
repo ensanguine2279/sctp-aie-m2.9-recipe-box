@@ -1,3 +1,5 @@
+import styles from "./CuisineFilterBar.module.css";
+
 /**
  * A filter bar component for selecting a cuisine.
  *
@@ -10,10 +12,13 @@ export function CuisineFilterBar({ value, onChange, cuisines = [] }) {
   console.log("CuisineFilterBar rendered");
 
   return (
-    <div className="cuisine-filter-bar">
-      <label htmlFor="cuisine-select">Filter by Cuisine: </label>
+    <div className={styles.filterBar}>
+      <label htmlFor="cuisine-select" className={styles.label}>
+        Filter by Cuisine:{" "}
+      </label>
       <select
         id="cuisine-select"
+        className={styles.select}
         value={value}
         onChange={(e) => onChange(e.target.value)}
       >

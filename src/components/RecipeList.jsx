@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { RecipeCard } from "./RecipeCard";
+import styles from "./RecipeList.module.css";
 
 /**
  * A component that fetches recipes from an API and renders them as a list of RecipeCards.
@@ -32,19 +33,19 @@ export function RecipeList() {
   }, []);
 
   if (loading) {
-    return <div className="loading">Loading recipes...</div>;
+    return <div className={styles.loading}>Loading recipes...</div>;
   }
 
   if (error) {
-    return <div className="error">Error: {error}</div>;
+    return <div className={styles.error}>Error: {error}</div>;
   }
 
   if (recipes.length === 0) {
-    return <div className="no-recipes">No recipes found.</div>;
+    return <div className={styles.noRecipes}>No recipes found.</div>;
   }
 
   return (
-    <div className="recipe-list">
+    <div className={styles.listContainer}>
       {recipes.map((recipe) => (
         <RecipeCard
           key={recipe.id || recipe.name}

@@ -1,27 +1,24 @@
-import { formatDuration } from "../utils/formatDuration"; // Adjust the import path as needed
+import { formatDuration } from "../utils/formatDuration";
+import styles from "./RecipeCard.module.css";
 
 /**
- * A pure display component that renders recipe details.
- *
- * @param {Object} props
- * @param {string} props.name - The name of the recipe
- * @param {string} props.cuisine - The cuisine type
- * @param {number} props.servings - Number of servings
- * @param {number} props.minutes - Total preparation/cooking time in minutes
+ * A pure display component that renders individual recipe details.
  */
 export function RecipeCard({ name, cuisine, servings, minutes }) {
   return (
-    <div className="recipe-card">
-      <h3>{name}</h3>
-      <p>
-        <strong>Cuisine:</strong> {cuisine}
-      </p>
-      <p>
-        <strong>Servings:</strong> {servings}
-      </p>
-      <p>
-        <strong>Time:</strong> {formatDuration(minutes)}
-      </p>
+    <div className={styles.card}>
+      <h3 className={styles.title}>{name}</h3>
+      <div className={styles.details}>
+        <p className={styles.detailItem}>
+          <strong>Cuisine:</strong> {cuisine}
+        </p>
+        <p className={styles.detailItem}>
+          <strong>Servings:</strong> {servings}
+        </p>
+        <p className={styles.detailItem}>
+          <strong>Time:</strong> {formatDuration(minutes)}
+        </p>
+      </div>
     </div>
   );
 }

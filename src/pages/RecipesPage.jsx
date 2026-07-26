@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { CuisineFilterBar } from "../components/CuisineFilterBar";
 import { RecipeCard } from "../components/RecipeCard";
+import { mockRecipes } from "../../data/mockRecipesData";
 
-export function RecipesPage() {
+import styles from "./RecipesPage.module.css";
+
+export default function RecipesPage() {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -11,25 +14,19 @@ export function RecipesPage() {
   const [selectedCuisine, setSelectedCuisine] = useState("");
   const [planCount, setPlanCount] = useState(0);
 
-  // Fetch recipes on mount
+  // Simulate fetching mock data on mount
   useEffect(() => {
-    async function fetchRecipes() {
+    const timer = setTimeout(() => {
       try {
-        setLoading(true);
-        const response = await fetch("/api/recipes");
-        if (!response.ok) {
-          throw new Error("Failed to fetch recipes");
-        }
-        const data = await response.json();
-        setRecipes(data);
+        setRecipes(mockRecipes);
+        setLoading(false);
       } catch (err) {
-        setError(err.message || "Something went wrong");
-      } finally {
+        setError("Failed to load mock recipes");
         setLoading(false);
       }
-    }
+    }, 500); // Small timeout to mimic network latency
 
-    fetchRecipes();
+    return () => clearTimeout(timer);
   }, []);
 
   // Extract unique cuisines for the filter dropdown
@@ -40,16 +37,19 @@ export function RecipesPage() {
     ? recipes.filter((r) => r.cuisine === selectedCuisine)
     : recipes;
 
-  if (loading) return <div>Loading recipes...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (loading) return <div className={styles.loading}>Loading recipes...</div>;
+  if (error) return <div className={styles.error}>Error: {error}</div>;
 
   return (
-    <div className="recipes-page" style={{ padding: "20px" }}>
-      <h1>Recipe Dashboard</h1>
+    <div className={styles.page}>
+      <h1 className={styles.header}>Recipe Dashboard</h1>
 
       {/* Unrelated state control */}
-      <div style={{ marginBottom: "20px" }}>
-        <button onClick={() => setPlanCount((prev) => prev + 1)}>
+      <div className={styles.controlsSection}>
+        <button
+          className={styles.planButton}
+          onClick={() => setPlanCount((prev) => prev + 1)}
+        >
           Plan to Cook ({planCount})
         </button>
       </div>
@@ -62,7 +62,7 @@ export function RecipesPage() {
       />
 
       {/* Recipe List Display */}
-      <div className="recipe-list" style={{ marginTop: "20px" }}>
+      <div className={styles.recipeGrid}>
         {filteredRecipes.map((recipe) => (
           <RecipeCard
             key={recipe.id || recipe.name}
