@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 import styles from "./CuisineFilterBar.module.css";
 
 /**
@@ -8,7 +10,7 @@ import styles from "./CuisineFilterBar.module.css";
  * @param {Function} props.onChange - Callback function triggered when the selection changes
  * @param {string[]} props.cuisines - Array of available unique cuisine strings
  */
-export function CuisineFilterBar({ value, onChange, cuisines = [] }) {
+function CuisineFilterBar({ value, onChange, cuisines = [] }) {
   console.log("CuisineFilterBar rendered");
 
   return (
@@ -32,3 +34,6 @@ export function CuisineFilterBar({ value, onChange, cuisines = [] }) {
     </div>
   );
 }
+
+// Exporting the component wrapped in React.memo to prevent unnecessary re-renders
+export default memo(CuisineFilterBar);

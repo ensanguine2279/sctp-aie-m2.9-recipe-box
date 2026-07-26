@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 
-import { CuisineFilterBar } from "../components/CuisineFilterBar";
+import CuisineFilterBar from "../components/CuisineFilterBar";
 import { RecipeList } from "../components/RecipeList";
 import { mockRecipes } from "../../data/mockRecipesData";
 
@@ -30,13 +30,23 @@ export default function RecipesPage() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Extract unique cuisines for the filter dropdown
-  const uniqueCuisines = [...new Set(recipes.map((r) => r.cuisine))];
+  // Handler for cuisine filter changes
+  const handleCuisineChange = useCallback((cuisine) => {
+    setSelectedCuisine(cuisine);
+  }, []);
 
-  // Deliberately unmemoized filtering on every render
-  const filteredRecipes = selectedCuisine
-    ? recipes.filter((r) => r.cuisine === selectedCuisine)
-    : recipes;
+  // Extract unique cuisines for the filter dropdown
+  const uniqueCuisines = useMemo(
+    () => [...new Set(recipes.map((r) => r.cuisine))],
+    [recipes],
+  );
+
+  // Memoize the filtered recipes to avoid unnecessary recalculations
+  const filteredRecipes = useMemo(() => {
+    return selectedCuisine
+      ? recipes.filter((r) => r.cuisine === selectedCuisine)
+      : recipes;
+  }, [selectedCuisine, recipes]);
 
   return (
     <div className={styles.page}>
@@ -55,7 +65,7 @@ export default function RecipesPage() {
       {/* Filter Bar */}
       <CuisineFilterBar
         value={selectedCuisine}
-        onChange={setSelectedCuisine}
+        onChange={handleCuisineChange}
         cuisines={uniqueCuisines}
       />
 
