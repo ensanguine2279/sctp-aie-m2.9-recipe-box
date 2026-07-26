@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+
 import { CuisineFilterBar } from "../components/CuisineFilterBar";
-import { RecipeCard } from "../components/RecipeCard";
+import { RecipeList } from "../components/RecipeList";
 import { mockRecipes } from "../../data/mockRecipesData";
 
 import styles from "./RecipesPage.module.css";
@@ -37,9 +38,6 @@ export default function RecipesPage() {
     ? recipes.filter((r) => r.cuisine === selectedCuisine)
     : recipes;
 
-  if (loading) return <div className={styles.loading}>Loading recipes...</div>;
-  if (error) return <div className={styles.error}>Error: {error}</div>;
-
   return (
     <div className={styles.page}>
       <h1 className={styles.header}>Recipe Dashboard</h1>
@@ -62,17 +60,7 @@ export default function RecipesPage() {
       />
 
       {/* Recipe List Display */}
-      <div className={styles.recipeGrid}>
-        {filteredRecipes.map((recipe) => (
-          <RecipeCard
-            key={recipe.id || recipe.name}
-            name={recipe.name}
-            cuisine={recipe.cuisine}
-            servings={recipe.servings}
-            minutes={recipe.minutes}
-          />
-        ))}
-      </div>
+      <RecipeList recipes={filteredRecipes} loading={loading} error={error} />
     </div>
   );
 }
