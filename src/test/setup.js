@@ -1,0 +1,25 @@
+import "@testing-library/jest-dom/vitest";
+import { afterEach, vi } from "vitest";
+import { cleanup } from "@testing-library/react";
+
+// Keep tests isolated: unmount components and reset mocks after every test.
+afterEach(() => {
+  cleanup();
+  vi.restoreAllMocks();
+});
+
+// Optional: mock browser APIs that jsdom may not implement in your tests.
+// Example:
+// Object.defineProperty(window, "matchMedia", {
+//   writable: true,
+//   value: vi.fn().mockImplementation((query) => ({
+//     matches: false,
+//     media: query,
+//     onchange: null,
+//     addListener: vi.fn(), // legacy
+//     removeListener: vi.fn(), // legacy
+//     addEventListener: vi.fn(),
+//     removeEventListener: vi.fn(),
+//     dispatchEvent: vi.fn(),
+//   })),
+// });

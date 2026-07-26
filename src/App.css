@@ -1,0 +1,72 @@
+/* src/App.css */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-header {
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--primary);
+}
+
+.app-main {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.welcome-card {
+  background-color: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  text-align: center;
+}
+
+.welcome-card h1 {
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+}
+
+.welcome-card p {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.cta-button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.cta-button:hover {
+  background-color: var(--primary-hover);
+}
+
+.app-footer {
+  text-align: center;
+  padding: 1rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  border-top: 1px solid var(--border);
+  background-color: var(--bg-surface);
+}
