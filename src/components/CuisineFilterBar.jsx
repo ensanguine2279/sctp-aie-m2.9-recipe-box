@@ -36,4 +36,4 @@ function CuisineFilterBar({ value, onChange, cuisines = [] }) {
 }
 
 // Exporting the component wrapped in React.memo to prevent unnecessary re-renders
-export default memo(CuisineFilterBar);
+export default CuisineFilterBar;

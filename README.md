@@ -1,9 +1,9 @@
 # Assignment: Recipe Box
 
-## Key Highlights
+## Key Notes
 
-1. `vite.config.js -> define -> global`
-   This tells Vite to replace any instance of `global` with `globalThis`. `globalThis` works across browser, Node, workers, and jsdom, whereas window only exists in browser-like environments. `globalThis` reduces environment-specific edge cases in tests and tooling.
+- `vite.config.js → define → global`
+  This tells Vite to replace any instance of `global` with `globalThis`. `globalThis` works across browser, Node, workers, and jsdom, whereas window only exists in browser-like environments. `globalThis` reduces environment-specific edge cases in tests and tooling.
 
 ```js
 define: {
@@ -11,14 +11,33 @@ define: {
 },
 ```
 
-- `environment: jsdom`
-  This makes tests run in a browser-like DOM environment instead of pure Node.
-  Use this when testing React components, document, window, events, etc.
-- `globals: true`
-  This allows test APIs globally (i.e. describe, it, expect) without importing them in every test file.
-- `setupFiles: ./src/test/setup.js`
-  This runs a setup file before tests execute.
-  Typical use: add custom matchers, mock browser APIs, configure testing-library, reset mocks, etc.
+- Part 4 - Page Component
+
+  Before `useMemo`, `memo` and `useCallback`, the `CuisineFilterBar` component re-renders every time the `Plan to Cook` button is clicked.
+
+[![CuisineFilterBar Re-rendering](./assets/images/part4-thumb.jpg)](./assets/videos/part4-github.mp4)
+
+- Part 5 - Write the Tests
+
+  All test cases for the pure function, pure display React component, and the async React component passed.
+
+  Below are the results for 8 test cases over 3 test files.
+
+  ![Testing Results](./assets/images/part5.jpg)
+
+- Part 7 - Lazy-Load a Recipe Details Panel
+
+  When built, `RecipeDetails` is emitted as an seperate independent chunk from the main bundle.
+
+  ![Recipe Details](./assets/images/part7-1.jpg)
+
+  When `RecipePage` is launched, from DevTools → Network, we can observed that `RecipeDetails` is not requested. Other components e.g. RecipeList, RecipePage, RecipeCard, etc were loaded.
+
+  ![Components loaded on RecipePage launch](./assets/images/part7-2.jpg)
+
+  Only after a `RecipeCard` is clicked, the `RecipeDetails` resources (i.e. JSX and CSS) are loaded as shown below.
+
+  ![RecipeDetails resources loaded on RecipeCard clicked](./assets/images/part7-3.jpg)
 
 <details>
 <summary>Assignment Details</summary>
@@ -177,4 +196,5 @@ If you use an AI coding assistant:
 - [React: useCallback](https://react.dev/reference/react/useCallback)
 - [React: memo](https://react.dev/reference/react/memo)
 - [React: lazy](https://react.dev/reference/react/lazy)
+
 </details>

@@ -1,10 +1,20 @@
-import { useState, useEffect, useMemo, useCallback } from "react";
+import {
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+  lazy,
+  Suspense,
+} from "react";
 
 import CuisineFilterBar from "../components/CuisineFilterBar";
 import { RecipeList } from "../components/RecipeList";
 import { mockRecipes } from "../../data/mockRecipesData";
 
 import styles from "./RecipesPage.module.css";
+
+// Lazy load the RecipeDetails component to generate a separate bundle chunk
+const RecipeDetails = lazy(() => import("../components/RecipeDetails"));
 
 export default function RecipesPage() {
   const [recipes, setRecipes] = useState([]);
@@ -13,6 +23,10 @@ export default function RecipesPage() {
 
   // State for the cuisine filter and the independent counter
   const [selectedCuisine, setSelectedCuisine] = useState("");
+
+  // State to track which recipe is currently open in the details panel
+  const [activeRecipe, setActiveRecipe] = useState(null);
+
   const [planCount, setPlanCount] = useState(0);
 
   // Simulate fetching mock data on mount
@@ -70,7 +84,23 @@ export default function RecipesPage() {
       />
 
       {/* Recipe List Display */}
-      <RecipeList recipes={filteredRecipes} loading={loading} error={error} />
+      <RecipeList
+        recipes={filteredRecipes}
+        loading={loading}
+        error={error}
+        onRecipeClick={setActiveRecipe}
+      />
+
+      {activeRecipe && (
+        <Suspense
+          fallback={<div className={styles.loading}>Loading details...</div>}
+        >
+          <RecipeDetails
+            recipe={activeRecipe}
+            onClose={() => setActiveRecipe(null)}
+          />
+        </Suspense>
+      )}
     </div>
   );
 }
