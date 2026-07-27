@@ -84,12 +84,7 @@ export default function RecipesPage() {
       />
 
       {/* Recipe List Display */}
-      <RecipeList
-        recipes={filteredRecipes}
-        loading={loading}
-        error={error}
-        onRecipeClick={setActiveRecipe}
-      />
+      <RecipeList recipes={filteredRecipes} loading={loading} error={error} />
 
       {activeRecipe && (
         <Suspense

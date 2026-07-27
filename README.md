@@ -17,9 +17,13 @@ define: {
 
   **Click the image below to watch the demo video.**
 
-[![CuisineFilterBar Re-rendering](./assets/images/part4-thumb.jpg)](https://github.com/ensanguine2279/sctp-aie-m2.9-recipe-box/blob/main/assets/videos/part4-github.mp4)
+  [![CuisineFilterBar Before Optimization](./assets/images/part4-1-thumb.jpg)](https://youtube.com/shorts/SD2ocfXBDwI)
 
-[Watch Part 4 Demo Video](https://github.com/ensanguine2279/sctp-aie-m2.9-recipe-box/blob/main/assets/videos/part4-github.mp4)
+  After optimization, `CuisineFilterBar` no longer re-renders when the `Plan to Cook` button is click. It renders when the selected cuisine changes and filters the `RecipeList` accordingly.
+
+  **Click the image below to watch the post-optimization demo video.**
+
+  [![CuisineFilterBar After Optimization](./assets/images/part4-2-thumb.jpg)](https://youtube.com/shorts/6G99Pd0ERxU)
 
 - Part 5 - Write the Tests
 
