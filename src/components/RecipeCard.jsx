@@ -1,11 +1,11 @@
 import { formatDuration } from "../utils/formatDuration";
 import styles from "./RecipeCard.module.css";
 
-export function RecipeCard({ name, cuisine, servings, minutes, onClick }) {
+export function RecipeCard({ id, name, cuisine, servings, minutes, onClick }) {
   return (
     <div
       className={styles.card}
-      onClick={onClick}
+      onClick={() => onClick?.(id)}
       style={{ cursor: "pointer" }}
     >
       <h3 className={styles.title}>{name}</h3>

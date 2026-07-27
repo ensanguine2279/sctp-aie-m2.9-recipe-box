@@ -80,6 +80,7 @@ export function RecipeList({
         {recipes.map((recipe) => (
           <RecipeCard
             key={recipe.id || recipe.name}
+            id={recipe.id}
             name={recipe.name}
             cuisine={recipe.cuisine}
             servings={recipe.servings}
