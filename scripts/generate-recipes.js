@@ -49,7 +49,7 @@ function randomFrom(list) {
   return list[Math.floor(Math.random() * list.length)];
 }
 
-const receipes = Array.from({ length: 500 }, (_, i) => {
+const receipes = Array.from({ length: 5000 }, (_, i) => {
   const id = i + 1;
   const name = `${randomFrom(ADJECTIVES)} ${randomFrom(NOUNS)}`;
   return {
