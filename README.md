@@ -15,7 +15,11 @@ define: {
 
   Before `useMemo`, `memo` and `useCallback`, the `CuisineFilterBar` component re-renders every time the `Plan to Cook` button is clicked.
 
-[![CuisineFilterBar Re-rendering](./assets/images/part4-thumb.jpg)](./assets/videos/part4-github.mp4)
+  **Click the image below to watch the demo video.**
+
+[![CuisineFilterBar Re-rendering](./assets/images/part4-thumb.jpg)](https://github.com/ensanguine2279/sctp-aie-m2.9-recipe-box/blob/main/assets/videos/part4-github.mp4)
+
+[Watch Part 4 Demo Video](https://github.com/ensanguine2279/sctp-aie-m2.9-recipe-box/blob/main/assets/videos/part4-github.mp4)
 
 - Part 5 - Write the Tests
 
