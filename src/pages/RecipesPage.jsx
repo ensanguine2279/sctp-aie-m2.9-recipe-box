@@ -21,8 +21,9 @@ export default function RecipesPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // State for the cuisine filter and the independent counter
+  // State for the cuisine filter and search query
   const [selectedCuisine, setSelectedCuisine] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   // State to track which recipe is currently open in the details panel
   const [activeRecipe, setActiveRecipe] = useState(null);
@@ -55,12 +56,18 @@ export default function RecipesPage() {
     [recipes],
   );
 
-  // Memoize the filtered recipes to avoid unnecessary recalculations
+  // Memoize filtered recipes based on both selected cuisine and search query
   const filteredRecipes = useMemo(() => {
-    return selectedCuisine
-      ? recipes.filter((r) => r.cuisine === selectedCuisine)
-      : recipes;
-  }, [selectedCuisine, recipes]);
+    return recipes.filter((r) => {
+      const matchesCuisine = selectedCuisine
+        ? r.cuisine === selectedCuisine
+        : true;
+      const matchesSearch = searchQuery
+        ? r.name.toLowerCase().includes(searchQuery.toLowerCase())
+        : true;
+      return matchesCuisine && matchesSearch;
+    });
+  }, [recipes, selectedCuisine, searchQuery]);
 
   return (
     <div className={styles.page}>
@@ -76,12 +83,28 @@ export default function RecipesPage() {
         </button>
       </div>
 
-      {/* Filter Bar */}
-      <CuisineFilterBar
-        value={selectedCuisine}
-        onChange={handleCuisineChange}
-        cuisines={uniqueCuisines}
-      />
+      {/* Filter and Search Controls */}
+      <div className={styles.filterContainer}>
+        <div className={styles.searchGroup}>
+          <label htmlFor="recipe-search" className={styles.label}>
+            Search by Name:{" "}
+          </label>
+          <input
+            id="recipe-search"
+            type="text"
+            className={styles.searchInput}
+            placeholder="Enter recipe name..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
+
+        <CuisineFilterBar
+          value={selectedCuisine}
+          onChange={setSelectedCuisine}
+          cuisines={uniqueCuisines}
+        />
+      </div>
 
       {/* Recipe List Display */}
       <RecipeList recipes={filteredRecipes} loading={loading} error={error} />
