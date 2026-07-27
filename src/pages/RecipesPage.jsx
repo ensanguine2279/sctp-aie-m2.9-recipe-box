@@ -8,7 +8,7 @@ import {
 } from "react";
 
 import CuisineFilterBar from "../components/CuisineFilterBar";
-import { RecipeList } from "../components/RecipeList";
+import RecipeList from "../components/RecipeList";
 import { mockRecipes } from "../../data/mockRecipesData";
 
 import styles from "./RecipesPage.module.css";

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 
 import { RecipeCard } from "./RecipeCard";
 
@@ -13,6 +13,8 @@ export function RecipeList({
   error: errorProp,
   onRecipeClick,
 }) {
+  console.log("RecipeList rendered");
+
   const [fetchedRecipes, setFetchedRecipes] = useState([]);
   const [fetchedLoading, setFetchedLoading] = useState(true);
   const [fetchedError, setFetchedError] = useState(null);
@@ -83,3 +85,5 @@ export function RecipeList({
     </div>
   );
 }
+
+export default memo(RecipeList);

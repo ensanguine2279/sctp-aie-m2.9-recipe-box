@@ -11,11 +11,11 @@ define: {
 },
 ```
 
-- Part 4 - Page Component
+- ### Part 4 - Page Component
 
   Before `useMemo`, `memo` and `useCallback`, the `CuisineFilterBar` component re-renders every time the `Plan to Cook` button is clicked.
 
-  **Click the image below to watch the demo video.**
+  **Click the image below to watch the pre-optimization demo video.**
 
   [![CuisineFilterBar Before Optimization](./assets/images/part4-1-thumb.jpg)](https://youtube.com/shorts/SD2ocfXBDwI)
 
@@ -25,7 +25,7 @@ define: {
 
   [![CuisineFilterBar After Optimization](./assets/images/part4-2-thumb.jpg)](https://youtube.com/shorts/6G99Pd0ERxU)
 
-- Part 5 - Write the Tests
+- ### Part 5 - Write the Tests
 
   All test cases for the pure function, pure display React component, and the async React component passed.
 
@@ -33,7 +33,29 @@ define: {
 
   ![Testing Results](./assets/images/part5.jpg)
 
-- Part 7 - Lazy-Load a Recipe Details Panel
+- ### Part 6 - Profile and Fix Performance
+
+  Before optimization, most of the time is spent rendering the list subtree of card components, not the page or list component themselves. Parent component logic is not the main bottleneck. The expensive part is the large child subtree (cards) re-rendering.
+
+  - RecipesPage (1.4ms of 220.7ms):
+
+    1.4 ms = time spent rendering `RecipesPage` itself.
+    220.7 ms = time for `RecipesPage` plus all descendants under it.
+
+  - RecipeList (35.4ms of 216.6ms):
+
+    35.4 ms = `RecipeList` component’s own render work.
+    216.6 ms = `RecipeList` plus its descendants (mostly many `RecipeCard` nodes).
+
+  ![Profiling before optimization](./assets/images/part6-1.jpg)
+
+  After using `useMemo`, `memo`, and `useCallback`, there is a hugh drop in render commit cost from around 220ms to 1-2ms. The optimization prevented `RecipeList` and `RecipeCard` subtree rerenders on unrelated updates.
+
+  ![Flame chart after optimization](./assets/images/part6-2.jpg)
+
+  Memoized grey/hatched rows indicates skipped rerender work.
+
+- ### Part 7 - Lazy-Load a Recipe Details Panel
 
   When built, `RecipeDetails` is emitted as an seperate independent chunk from the main bundle.
 
