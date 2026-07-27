@@ -37,7 +37,21 @@ define: {
 
   Before optimization, most of the time is spent rendering the list subtree of card components, not the page or list component themselves. Parent component logic is not the main bottleneck. The expensive part is the large child subtree (cards) re-rendering.
 
+  - RecipesPage (1.4ms of 220.7ms):
+    1.4 ms = time spent rendering RecipesPage itself.
+    220.7 ms = time for RecipesPage plus all descendants under it.
+
+  - RecipeList (35.4ms of 216.6ms):
+    35.4 ms = RecipeList component’s own render work.
+    216.6 ms = RecipeList plus its descendants (mostly many RecipeCard nodes).
+
   ![Profiling before optimization](./assets/images/part6-1.jpg)
+
+  After using `useMemo`, `memo`, and `useCallback`, there is a hugh drop in render commit cost from around 220ms to 1-2ms. The optimization prevented `RecipeList` and `RecipeCard` subtree rerenders on unrelated updates.
+
+  Memoized grey/hatched rows indicates skipped rerender work.
+
+  ![Flame chart after optimization](./assets/images/part6-2.jpg)
 
 - ### Part 7 - Lazy-Load a Recipe Details Panel
 

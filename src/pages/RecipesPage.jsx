@@ -1,7 +1,14 @@
-import { useState, useEffect, lazy, Suspense } from "react";
+import {
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+  lazy,
+  Suspense,
+} from "react";
 
 import CuisineFilterBar from "../components/CuisineFilterBar";
-import { RecipeList } from "../components/RecipeList";
+import RecipeList from "../components/RecipeList";
 import { mockRecipes } from "../../data/mockRecipesData";
 
 import styles from "./RecipesPage.module.css";
@@ -38,17 +45,22 @@ export default function RecipesPage() {
   }, []);
 
   // Handler for cuisine filter changes
-  const handleCuisineChange = (cuisine) => {
+  const handleCuisineChange = useCallback((cuisine) => {
     setSelectedCuisine(cuisine);
-  };
+  }, []);
 
   // Extract unique cuisines for the filter dropdown
-  const uniqueCuisines = [...new Set(recipes.map((r) => r.cuisine))];
+  const uniqueCuisines = useMemo(
+    () => [...new Set(recipes.map((r) => r.cuisine))],
+    [recipes],
+  );
 
   // Memoize the filtered recipes to avoid unnecessary recalculations
-  const filteredRecipes = selectedCuisine
-    ? recipes.filter((r) => r.cuisine === selectedCuisine)
-    : recipes;
+  const filteredRecipes = useMemo(() => {
+    return selectedCuisine
+      ? recipes.filter((r) => r.cuisine === selectedCuisine)
+      : recipes;
+  }, [selectedCuisine, recipes]);
 
   return (
     <div className={styles.page}>
