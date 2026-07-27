@@ -17,9 +17,9 @@ define: {
 
   **Click the image below to watch the demo video.**
 
-[![CuisineFilterBar Re-rendering](./assets/images/part4-thumb.jpg)](https://github.com/ensanguine2279/sctp-aie-m2.9-recipe-box/blob/main/assets/videos/part4-github.mp4)
+[![CuisineFilterBar Re-rendering](./assets/images/part4-thumb.jpg)](https://www.loom.com/share/cfd5d80887ef48e6badf5ccdb33965b6)
 
-[Watch Part 4 Demo Video](https://github.com/ensanguine2279/sctp-aie-m2.9-recipe-box/blob/main/assets/videos/part4-github.mp4)
+[Watch Part 4 Demo Video](https://www.loom.com/share/cfd5d80887ef48e6badf5ccdb33965b6)
 
 - Part 5 - Write the Tests
 
