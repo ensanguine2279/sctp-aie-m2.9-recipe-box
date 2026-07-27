@@ -11,12 +11,14 @@ define: {
 },
 ```
 
-- Part 4 -
+- Part 4 - Page Component
+
   Before `useMemo`, `memo` and `useCallback`, the `CuisineFilterBar` component re-renders every time the `Plan to Cook` button is clicked.
 
 [![CuisineFilterBar Re-rendering](./assets/images/part4-thumb.jpg)](./assets/videos/part4-github.mp4)
 
 - Part 5 - Write the Tests
+
   All test cases for the pure function, pure display React component, and the async React component passed.
 
   Below are the results for 8 test cases over 3 test files.
@@ -24,6 +26,7 @@ define: {
   ![Testing Results](./assets/images/part5.jpg)
 
 - Part 7 - Lazy-Load a Recipe Details Panel
+
   When built, `RecipeDetails` is emitted as an seperate independent chunk from the main bundle.
 
   ![Recipe Details](./assets/images/part7-1.jpg)
