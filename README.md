@@ -33,6 +33,12 @@ define: {
 
   ![Testing Results](./assets/images/part5.jpg)
 
+- ### Part 6 - Profile and Fix Performance
+
+  Before optimization, most of the time is spent rendering the list subtree of card components, not the page or list component themselves. Parent component logic is not the main bottleneck. The expensive part is the large child subtree (cards) re-rendering.
+
+  ![Profiling before optimization](./assets/images/part6-1.jpg)
+
 - ### Part 7 - Lazy-Load a Recipe Details Panel
 
   When built, `RecipeDetails` is emitted as an seperate independent chunk from the main bundle.
