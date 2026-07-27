@@ -11,6 +11,7 @@ export function RecipeList({
   recipes: recipesProp,
   loading: loadingProp,
   error: errorProp,
+  onRecipeClick,
 }) {
   const [fetchedRecipes, setFetchedRecipes] = useState([]);
   const [fetchedLoading, setFetchedLoading] = useState(true);
@@ -76,6 +77,7 @@ export function RecipeList({
           cuisine={recipe.cuisine}
           servings={recipe.servings}
           minutes={recipe.minutes}
+          onClick={() => onRecipeClick?.(recipe)}
         />
       ))}
     </div>

@@ -1,12 +1,13 @@
 import { formatDuration } from "../utils/formatDuration";
 import styles from "./RecipeCard.module.css";
 
-/**
- * A pure display component that renders individual recipe details.
- */
-export function RecipeCard({ name, cuisine, servings, minutes }) {
+export function RecipeCard({ name, cuisine, servings, minutes, onClick }) {
   return (
-    <div className={styles.card}>
+    <div
+      className={styles.card}
+      onClick={onClick}
+      style={{ cursor: "pointer" }}
+    >
       <h3 className={styles.title}>{name}</h3>
       <div className={styles.details}>
         <p className={styles.detailItem}>
