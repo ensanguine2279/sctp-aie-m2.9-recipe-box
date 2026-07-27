@@ -101,7 +101,7 @@ export default function RecipesPage() {
 
         <CuisineFilterBar
           value={selectedCuisine}
-          onChange={setSelectedCuisine}
+          onChange={handleCuisineChange}
           cuisines={uniqueCuisines}
         />
       </div>
