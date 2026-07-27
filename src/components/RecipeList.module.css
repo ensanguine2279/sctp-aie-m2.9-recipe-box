@@ -1,3 +1,29 @@
+.resultCount {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #eff6ff, #f8fafc);
+  border: 1px solid #dbeafe;
+  color: #1e3a8a;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.resultCountValue {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.resultCountLabel {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #334155;
+}
+
 .listContainer {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));

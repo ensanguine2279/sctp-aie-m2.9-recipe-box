@@ -69,6 +69,12 @@ define: {
 
   ![RecipeDetails resources loaded on RecipeCard clicked](./assets/images/part7-3.jpg)
 
+  - ### Stretch Goals - Render Times > 100ms
+
+    After optimization, a `RecipeList` of ~300 items will incur render times that exceed 100ms.
+
+    ![Render times exceeding 100ms ](./assets/images/render-times.jpg)
+
 <details>
 <summary>Assignment Details</summary>
 

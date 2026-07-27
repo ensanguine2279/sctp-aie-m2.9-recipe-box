@@ -40,7 +40,7 @@ export default function RecipesPage() {
         setError("Failed to load mock recipes");
         setLoading(false);
       }
-    }, 500); // Small timeout to mimic network latency
+    }, 1); // Small timeout to mimic network latency
 
     return () => clearTimeout(timer);
   }, []);
