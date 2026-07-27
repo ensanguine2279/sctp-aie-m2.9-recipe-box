@@ -17,9 +17,9 @@ define: {
 
   **Click the image below to watch the demo video.**
 
-[![CuisineFilterBar Re-rendering](./assets/images/part4-thumb.jpg)](https://youtube.com/shorts/4sfON2kn5Wg?feature=share)
+  [![CuisineFilterBar Re-rendering](./assets/images/part4-thumb.jpg)](https://youtube.com/shorts/SD2ocfXBDwI)
 
-[Watch Part 4 Demo Video](https://youtube.com/shorts/4sfON2kn5Wg?feature=share)
+  [Watch Part 4 Demo Video](https://youtube.com/shorts/SD2ocfXBDwI)
 
 - Part 5 - Write the Tests
 
