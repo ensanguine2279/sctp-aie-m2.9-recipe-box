@@ -15,7 +15,7 @@ define: {
 
   Before `useMemo`, `memo` and `useCallback`, the `CuisineFilterBar` component re-renders every time the `Plan to Cook` button is clicked.
 
-  **Click the image below to watch the demo video.**
+  **Click the image below to watch the pre-optimization demo video.**
 
   [![CuisineFilterBar Before Optimization](./assets/images/part4-1-thumb.jpg)](https://youtube.com/shorts/SD2ocfXBDwI)
 
