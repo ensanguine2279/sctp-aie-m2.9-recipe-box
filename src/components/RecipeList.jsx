@@ -71,18 +71,24 @@ export function RecipeList({
   }
 
   return (
-    <div className={styles.listContainer}>
-      {recipes.map((recipe) => (
-        <RecipeCard
-          key={recipe.id || recipe.name}
-          name={recipe.name}
-          cuisine={recipe.cuisine}
-          servings={recipe.servings}
-          minutes={recipe.minutes}
-          onClick={() => onRecipeClick?.(recipe)}
-        />
-      ))}
-    </div>
+    <>
+      <div className={styles.resultCount}>
+        <span className={styles.resultCountValue}>{recipes.length}</span>
+        <span className={styles.resultCountLabel}>recipes found</span>
+      </div>
+      <div className={styles.listContainer}>
+        {recipes.map((recipe) => (
+          <RecipeCard
+            key={recipe.id || recipe.name}
+            name={recipe.name}
+            cuisine={recipe.cuisine}
+            servings={recipe.servings}
+            minutes={recipe.minutes}
+            onClick={() => onRecipeClick?.(recipe)}
+          />
+        ))}
+      </div>
+    </>
   );
 }
 
