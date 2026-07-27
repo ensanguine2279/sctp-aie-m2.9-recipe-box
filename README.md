@@ -17,9 +17,9 @@ define: {
 
   **Click the image below to watch the demo video.**
 
-[![CuisineFilterBar Re-rendering](./assets/images/part4-thumb.jpg)](https://www.loom.com/share/cfd5d80887ef48e6badf5ccdb33965b6)
+[![CuisineFilterBar Re-rendering](./assets/images/part4-thumb.jpg)](https://www.youtube.com/watch?v=cm_M61FDfdU)
 
-[Watch Part 4 Demo Video](https://www.loom.com/share/cfd5d80887ef48e6badf5ccdb33965b6)
+[Watch Part 4 Demo Video](https://www.youtube.com/watch?v=cm_M61FDfdU)
 
 - Part 5 - Write the Tests
 
